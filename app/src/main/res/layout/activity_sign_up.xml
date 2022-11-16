@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SignUp"
     android:layout_width="409dp"
     android:layout_height="729dp"
     android:orientation="vertical"
     tools:layout_editor_absoluteX="1dp"
-    tools:layout_editor_absoluteY="1dp"
-    tools:context=".MainActivity" >
+    tools:layout_editor_absoluteY="1dp">
 
     <EditText
-        android:id="@+id/usernameInputLogin"
+        android:id="@+id/usernameInputSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -19,22 +19,24 @@
         android:hint="Username" />
 
     <EditText
-        android:id="@+id/passwordInputLogin"
+        android:id="@+id/passwordInputSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Password" />
 
-    <Button
-        android:id="@+id/signInBtn"
+    <EditText
+        android:id="@+id/repasswordInputSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In" />
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Re-Password" />
 
     <Button
-        android:id="@+id/signUpNavBtn"
+        android:id="@+id/signUpBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Don't have an account? Sign Up" />
+        android:text="Sign Up" />
 </LinearLayout>

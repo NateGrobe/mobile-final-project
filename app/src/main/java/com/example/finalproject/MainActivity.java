@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button calNavBtn, waterNavBtn, habitNavBtn;
+    Button signInBtn, signUpBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,32 +17,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        calNavBtn = findViewById(R.id.calNavBtn);
-        waterNavBtn = findViewById(R.id.waterNavBtn);
-        habitNavBtn = findViewById(R.id.habitNavBtn);
+        signInBtn = findViewById(R.id.signInBtn);
+        signUpBtn = findViewById(R.id.signUpNavBtn);
 
-        // basic navigation to the three main screens
-        calNavBtn.setOnClickListener(new View.OnClickListener() {
+        // navigate to home screen
+        signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent calorieNav = new Intent(context, Calories.class);
-                startActivity(calorieNav);
+                Intent homeNav = new Intent(context, Home.class);
+                startActivity(homeNav);
             }
         });
 
-        waterNavBtn.setOnClickListener(new View.OnClickListener() {
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent waterNav = new Intent(context, Water.class);
-                startActivity(waterNav);
-            }
-        });
-
-        habitNavBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent habitNav = new Intent(context, Habit.class);
-                startActivity(habitNav);
+                Intent signUpNav = new Intent(context, SignUp.class);
+                startActivity(signUpNav);
             }
         });
     }
