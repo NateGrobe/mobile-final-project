@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/nameEdit"
@@ -20,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="10dp">
             <RadioButton
                 android:id="@+id/radio_streak"
                 android:layout_width="match_parent"
@@ -41,6 +42,17 @@
 
         </RadioGroup>
 
-    </RelativeLayout>
+        <Switch
+            android:id="@+id/sw_activeHabit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true">
+
+
+        </Switch>
+
+    </LinearLayout>
     
 </RelativeLayout>
