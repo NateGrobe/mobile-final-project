@@ -1,18 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Calories">
 
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/calorieSnack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calories Screen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="339dp"
+        android:layout_marginBottom="168dp"
+        android:text="0000"
+        android:textColor="#a1382a"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/calorieDinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="333dp"
+        android:layout_marginBottom="267dp"
+        android:text="0000"
+        android:textColor="#a1382a"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/calorieBreakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="333dp"
+        android:layout_marginBottom="464dp"
+        android:text="0000"
+        android:textColor="#a1382a"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/calorieLunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginEnd="333dp"
+        android:layout_marginBottom="362dp"
+        android:text="0000"
+        android:textColor="#a1382a"
+        android:textSize="20dp" />
+
+    <View
+        android:id="@+id/rectangle_at_the_top"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-2dp"
+        android:background="#a1382a"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/calorieTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginBottom="669dp"
+        android:text="Calories"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/calorieCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rectangle_at_the_top"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginBottom="565dp"
+        android:text="0000"
+        android:textColor="#a1382a"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/breakfastTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@+id/rectangle_at_the_top"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="327dp"
+        android:layout_marginBottom="512dp"
+        android:text="Breakfast:" />
+
+    <TextView
+        android:id="@+id/lunchTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rectangle_at_the_top"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="339dp"
+        android:layout_marginBottom="410dp"
+        android:text="Lunch:" />
+
+    <TextView
+        android:id="@+id/dinnerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="416dp"
+        android:layout_marginEnd="334dp"
+        android:layout_marginBottom="296dp"
+        android:text="Dinner:" />
+
+    <TextView
+        android:id="@+id/snackTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="514dp"
+        android:layout_marginEnd="333dp"
+        android:layout_marginBottom="198dp"
+        android:text="Snack:" />
+
+    <Button
+        android:id="@+id/addMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#a1382a"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="77dp"
+        android:text="Add Meal" />
+
+
+</RelativeLayout>
+
