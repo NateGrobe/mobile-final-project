@@ -30,6 +30,7 @@ public class Habit extends AppCompatActivity {
     Switch sw_activeHabit;
 
     HabitDBHelper myDb;
+    List<HabitModel> habits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,9 @@ public class Habit extends AppCompatActivity {
 
         buildDialog();
 
+        habits = myDb.getHabits();
+        Integer habitCount = habits.size();
+//        Toast.makeText(Habit.this, "habit Count " + habitCount, Toast.LENGTH_LONG).show();
         //display the current records in the DB
         displayDatabase();
 
@@ -92,7 +96,8 @@ public class Habit extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        if(name.getText().toString() == null || name.getText().toString().isEmpty()){
+                        if(name.getText().toString() == null || name.getText().toString().isEmpty() || myDb.CheckIsDataAlreadyExists(name.getText().toString())){
+//                             || myDb.CheckIsDataAlreadyExists(name.getText().toString())
                             Toast.makeText(Habit.this, "Error creating habit", Toast.LENGTH_LONG).show();
                         } else {
                             try {
@@ -148,7 +153,7 @@ public class Habit extends AppCompatActivity {
                 }
 
                 //call the deleteRecord method
-                myDb.deleteRecord(nameView.getText().toString());
+                myDb.deleteRecord(name);
 
             }
         });
@@ -166,12 +171,13 @@ public class Habit extends AppCompatActivity {
     //display the records from DB
     private void displayDatabase() {
 //        HabitDBHelper habitDBHelper = new HabitDBHelper();
-        List<HabitModel> habits = myDb.getHabits();
+//        List<HabitModel> habits = myDb.getHabits();
 
 //        ArrayAdapter habitArrayAdapter = new ArrayAdapter<HabitModel>(this, )
         for (int i=0; i<habits.size(); i++) {
 
 //            habits.get(i)
+//            Integer habitID = habits.get(i).getId();
             String habitName = habits.get(i).getName();
             String habitType = habits.get(i).getHabitType();
 //            Toast.makeText(Habit.this, habits.get(i).getHabitType().toString(), Toast.LENGTH_LONG).show();
@@ -187,6 +193,8 @@ public class Habit extends AppCompatActivity {
 //        buckesText.setText(temp);
 
     }
+
+
 
 
 }

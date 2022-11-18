@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -93,11 +94,8 @@ public class HabitDBHelper extends SQLiteOpenHelper {
         List<HabitModel> returnList = new ArrayList<>();
 
         //get data from db
-
         String queryString = "SELECT * FROM " + TABLE_NAME;
-
         SQLiteDatabase db = this.getReadableDatabase();
-
         Cursor cursor = db.rawQuery(queryString, null);
 
         if(cursor.moveToFirst()) {
@@ -119,6 +117,17 @@ public class HabitDBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return returnList;
+    }
+    public boolean CheckIsDataAlreadyExists(String fieldValue) {
+        String Query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_NAME + "='"  + fieldValue +"';";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
     }
 
 }
