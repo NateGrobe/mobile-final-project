@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"
+            android:inputType="number"
             android:hint="Number" />
 
         <Spinner
@@ -37,17 +38,36 @@
             android:layout_height="48dp"
             android:layout_marginStart="20dp"
             android:layout_weight="2"
-            android:contentDescription="@string/app_name" />
+            android:contentDescription="@string/app_name"
+            />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/subBtn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="@color/teal_200"
-        android:text="Submit" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/teal_200"
+            android:text="ADD +"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/subBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_500"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Remove -"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/image"
@@ -72,11 +92,19 @@
             android:textAlignment="textEnd" />
 
         <TextView
+            android:id="@+id/totalCups"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:textAlignment="center"
+            android:text="0" />
+        <Spinner
+            android:id="@+id/outputUnitSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="50dp"
-            android:layout_weight="1"
-            android:text="0 Cups" />
+            />
     </LinearLayout>
 
     <TextView

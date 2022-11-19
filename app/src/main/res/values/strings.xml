@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Wellness</string>
-    <string name="rec_values">Cups : 10(men) or 7(women)\n\nml: 3000(men) or 2200(women) \n\nFl Oz: 101(men) or 74(women)</string>
+    <string name="rec_values">Cups : 12(men) or 8.8(women)\n\nml: 3000(men) or 2200(women)</string>
     <string name="rec_header">Recommended Daily Water Consumption:</string>
+    <string-array name="units">
+        <item>Cups</item>
+        <item>ML</item>
+    </string-array>
 </resources>
