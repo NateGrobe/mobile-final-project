@@ -54,6 +54,7 @@ public class Water extends AppCompatActivity {
         DB.deleteRecords();
         int currentVolume = DB.retrieveVolume();
         totalCups.setText(String.valueOf(currentVolume));
+        setImage(currentVolume);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,12 +129,13 @@ public class Water extends AppCompatActivity {
         int oldVolume = DB.retrieveVolume();
         Toast.makeText(this, String.valueOf(oldVolume), Toast.LENGTH_LONG).show();
         int newVolume = oldVolume + currentVolume;
-
+        setImage(newVolume);
         DB.updateRecord(newVolume, currentUnit);
         if (SelectedUnit.equals("ML")) {
             newVolume = newVolume * 250;
         }
         totalCups.setText(String.valueOf(newVolume));
+
     }
     private void subTotal(WaterDBHelper DB, int currentVolume, String currentUnit, String SelectedUnit){
         int newVolume = 0;
@@ -143,9 +145,48 @@ public class Water extends AppCompatActivity {
            newVolume = oldVolume - currentVolume;
         }
         DB.updateRecord(newVolume, currentUnit);
+        setImage(newVolume);
         if (SelectedUnit.equals("ML")) {
             newVolume = newVolume * 250;
         }
         totalCups.setText(String.valueOf(newVolume));
+    }
+    public void setImage(int volume){
+        Toast.makeText(this, "Volume: " + volume, Toast.LENGTH_LONG).show();
+        switch (volume){
+            case 0:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdropletempty));
+                break;
+            case 1:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet1bar));
+                break;
+            case 2:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet2bar));
+                break;
+            case 3:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet3bar));
+                break;
+            case 4:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet4bar));
+                break;
+            case 5:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet5bar));
+                break;
+            case 6:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet6bar));
+                break;
+            case 7:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet7bar));
+                break;
+            case 8:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet8bar));
+                break;
+            case 9:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdroplet9bar));
+                break;
+            default:
+                image.setImageDrawable(getResources().getDrawable(R.drawable.waterdropletfull));
+                break;
+        }
     }
 }
