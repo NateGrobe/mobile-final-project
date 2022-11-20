@@ -45,6 +45,9 @@ public class SignUp extends AppCompatActivity {
 
                 // add user and sign in, fail if username already exists
                 if (db.addUser(user_n, pass, rememberMe)) {
+                    username.setError(null);
+                    password.setError(null);
+                    repassword.setError(null);
                     Intent signUp = new Intent(context, Home.class);
                     startActivity(signUp);
                 } else {

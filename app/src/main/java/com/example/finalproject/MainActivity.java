@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
                 boolean rememberMe = rememberMeBox.isChecked();
 
                 if (db.signInUser(user_n, pass, rememberMe)) {
+                    username.setError(null);
+                    password.setError(null);
                     startActivity(homeNav);
                 } else {
                     username.setError("Incorrect username or password");

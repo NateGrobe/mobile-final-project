@@ -58,6 +58,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
             String fetched_username = cursor.getString(1);
             if (fetched_username.equals(username)) {
                 db_read.close();
+                cursor.close();
                 return false;
             }
         }
@@ -96,13 +97,13 @@ public class UserDBHelper extends SQLiteOpenHelper {
                 db_write.update(TABLE_NAME, values, "id = ?", new String[]{Integer.toString(user_id)});
                 db_read.close();
                 db_write.close();
-            } else {
-                db_read.close();
-                return false;
+                cursor.close();
+                return true;
             }
         }
 
-        return true;
+        db_read.close();
+        return false;
     }
 
     public boolean rememberSignIn() {
@@ -113,6 +114,8 @@ public class UserDBHelper extends SQLiteOpenHelper {
             db_read.close();
             return true;
         }
+
+        cursor.close();
         return false;
     }
 
