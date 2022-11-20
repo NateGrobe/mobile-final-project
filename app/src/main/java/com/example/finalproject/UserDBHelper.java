@@ -119,4 +119,19 @@ public class UserDBHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    public void signOut() {
+        SQLiteDatabase db_read = this.getReadableDatabase();
+        Cursor cursor = db_read.rawQuery("select * from " + TABLE_NAME + " where " + COL_ACTIVE_USER + "=1;", null);
+
+        if (cursor.moveToFirst()) {
+            int user_id = cursor.getInt(0);
+            SQLiteDatabase db_write = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(COL_REMEMBER_USER, 0);
+            values.put(COL_ACTIVE_USER, 0);
+            db_write.update(TABLE_NAME, values, "id = ?", new String[]{Integer.toString(user_id)});
+        }
+        cursor.close();
+    }
+
 }
