@@ -26,6 +26,12 @@
         android:inputType="textPassword"
         android:hint="Password" />
 
+    <CheckBox
+        android:id="@+id/rememberMeChkBoxSI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remember Me" />
+
     <Button
         android:id="@+id/signInBtn"
         android:layout_width="match_parent"
