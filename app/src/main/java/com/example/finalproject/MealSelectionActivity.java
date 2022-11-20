@@ -129,6 +129,7 @@ public class MealSelectionActivity extends AppCompatActivity{
 
         //clear the input text
         userInputFood.setText("");
+        userInputCalories.setText("");
     }
 
     //display the records from DB
