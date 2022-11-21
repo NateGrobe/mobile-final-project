@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 public class wellnessDB extends SQLiteOpenHelper {
 
     //declare the class's instance variables
-    private static final String DATABASE_NAME = "wellness.db";
+    private static final String DATABASE_NAME = "calories.db";
     private static final int DATABASE_VERSION = 6;
     private static final String TABLE_BREAKFAST = "breakfast";
     private static final String TABLE_LUNCH = "lunch";
