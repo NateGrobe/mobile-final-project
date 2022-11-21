@@ -168,4 +168,16 @@ public class HabitDBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public int getNumberOfHabits() {
+        SQLiteDatabase db_read = this.getReadableDatabase();
+        Cursor cursor = db_read.rawQuery("select count(*) from " + TABLE_NAME + ";", null);
+         if (cursor.moveToFirst()) {
+             int numHabits = cursor.getInt(0);
+             cursor.close();
+             return numHabits;
+         }
+
+         return 0;
+    }
+
 }

@@ -16,19 +16,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/welcomeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="@font/baloo_thambi"
-            android:textColor="@color/white"
-
-            android:textSize="28sp" />
-
-        <TextView
             android:id="@+id/welcomeName"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -64,11 +51,14 @@
                     android:background="@drawable/border"
                     android:padding="10dp">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                    <TextView
+                        android:id="@+id/habitDisplay"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/waterdroplet5bar" />
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
                 <TextView
@@ -95,11 +85,14 @@
                     android:background="@drawable/border"
                     android:padding="10dp">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                    <TextView
+                        android:id="@+id/calorieDisplay"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_centerInParent="true"
-                         />
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
                 </RelativeLayout>
                 <TextView
@@ -126,11 +119,12 @@
                     android:background="@drawable/border"
                     android:padding="10dp">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_centerInParent="true"
-                       />
+                        <ImageView
+                            android:id="@+id/currentWater"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/waterdropletempty" />
 
                 </RelativeLayout>
                 <TextView

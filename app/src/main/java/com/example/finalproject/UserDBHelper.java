@@ -135,7 +135,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
     public String getUser() {
         SQLiteDatabase db_read = this.getReadableDatabase();
-        Cursor cursor = db_read.rawQuery("select * from " + TABLE_NAME + " where " + COL_REMEMBER_USER + "=1;", null);
+        Cursor cursor = db_read.rawQuery("select * from " + TABLE_NAME + " where " + COL_ACTIVE_USER + "=1;", null);
 
         if (cursor.moveToFirst()) {
             db_read.close();
