@@ -22,6 +22,7 @@ public class HabitDBHelper extends SQLiteOpenHelper {
     private static final String COL_ID ="id" ;
     private static final String COL_NAME = "habitName";
     private static final String COL_TYPE = "habitType";
+    private static final String COL_DATE = "habitDate";
 
     public HabitDBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -32,7 +33,8 @@ public class HabitDBHelper extends SQLiteOpenHelper {
         String createTable = "CREATE TABLE " + TABLE_NAME + "(" +
                 COL_ID + " Integer PRIMARY KEY AUTOINCREMENT," +
                 COL_NAME + " Text NOT NULL,"+
-                COL_TYPE + " number DEFAULT 0)" +";" ;
+                COL_TYPE + " Text NOT NULL,"+
+                COL_DATE + " Text NOT NULL)" +";" ;
         db.execSQL(createTable);
     }
 
@@ -47,6 +49,7 @@ public class HabitDBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COL_NAME,habitModel.getName());
         values.put(COL_TYPE,habitModel.getHabitType());
+        values.put(COL_DATE,habitModel.getStartDate());
 
 
         //SQLiteDatabase db = this.getWritableDatabase();
@@ -104,8 +107,9 @@ public class HabitDBHelper extends SQLiteOpenHelper {
                 int habitID = cursor.getInt(0);
                 String habitName = cursor.getString(1);
                 String habitType = cursor.getString(2);
+                String habitDate = cursor.getString(3);
 
-                HabitModel newHabit = new HabitModel(habitID, habitName, habitType);
+                HabitModel newHabit = new HabitModel(habitID, habitName, habitType, habitDate);
                 returnList.add(newHabit);
 
             }while(cursor.moveToNext());

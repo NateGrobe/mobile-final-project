@@ -8,14 +8,66 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/nature">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CREATE YOUR OWN:"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp">
+
+        </TextView>
         <EditText
             android:id="@+id/nameEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="name"
-            android:textSize="20dp" />
+            android:hint="Enter habit title..."
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/green"
+            android:padding="15dp"
+            android:background="@color/earth"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="RESTORE ARCHIVED HABIT:"
+            android:textColor="@color/white">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="CHOOSE A PRESET:"
+            android:textColor="@color/white">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ListView
+                android:id="@+id/presetHabitList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/earth"
+                android:tooltipText=">">
+            </ListView>
+        </LinearLayout>
+
+
         <RadioGroup
             android:id="@+id/radioGroup_habit"
             android:layout_width="match_parent"
@@ -28,6 +80,8 @@
                 android:layout_height="wrap_content"
                 android:text="Streak"
                 android:textSize="20dp"
+                android:buttonTint="@color/green"
+                android:textColor="@color/white"
                 android:checked="true">
 
             </RadioButton>
@@ -35,6 +89,8 @@
                 android:id="@+id/radio_daily"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:buttonTint="@color/green"
                 android:text="Daily"
                 android:textSize="20dp">
 
@@ -42,16 +98,7 @@
 
         </RadioGroup>
 
-        <Switch
-            android:id="@+id/sw_activeHabit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentTop="true">
 
-
-        </Switch>
 
     </LinearLayout>
     
