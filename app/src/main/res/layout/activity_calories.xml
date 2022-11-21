@@ -77,7 +77,7 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="-2dp"
-        android:background="#a1382a"
+        android:background="@color/green"
         android:visibility="visible" />
 
     <TextView

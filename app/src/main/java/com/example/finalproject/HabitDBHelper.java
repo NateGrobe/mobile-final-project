@@ -22,7 +22,9 @@ public class HabitDBHelper extends SQLiteOpenHelper {
     private static final String COL_ID ="id" ;
     private static final String COL_NAME = "habitName";
     private static final String COL_TYPE = "habitType";
-    private static final String COL_DATE = "habitDate";
+    private static final String COL_START_DATE = "habitStartDate";
+    private static final String COL_MISSED_DAYS = "habitMissedDays";
+    private static final String COL_TOTAL_DAYS = "habitTotalDays";
 
     public HabitDBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,7 +36,9 @@ public class HabitDBHelper extends SQLiteOpenHelper {
                 COL_ID + " Integer PRIMARY KEY AUTOINCREMENT," +
                 COL_NAME + " Text NOT NULL,"+
                 COL_TYPE + " Text NOT NULL,"+
-                COL_DATE + " Text NOT NULL)" +";" ;
+                COL_START_DATE + " Text NOT NULL,"+
+                COL_MISSED_DAYS + " Integer ,"+
+                COL_TOTAL_DAYS + " Integer )" +";" ;
         db.execSQL(createTable);
     }
 
@@ -46,10 +50,13 @@ public class HabitDBHelper extends SQLiteOpenHelper {
 
     //add record method
     public void addRecord(HabitModel habitModel){
+        System.out.println ("habitModel: " + habitModel);
         ContentValues values = new ContentValues();
         values.put(COL_NAME,habitModel.getName());
         values.put(COL_TYPE,habitModel.getHabitType());
-        values.put(COL_DATE,habitModel.getStartDate());
+        values.put(COL_START_DATE,habitModel.getStartDate());
+        values.put(COL_MISSED_DAYS,habitModel.getMissedDays());
+        values.put(COL_TOTAL_DAYS,habitModel.getTotalDays());
 
 
         //SQLiteDatabase db = this.getWritableDatabase();
@@ -62,6 +69,31 @@ public class HabitDBHelper extends SQLiteOpenHelper {
             db.close();
         }
 
+    }
+
+    //update record
+    public void updateRecord(HabitModel habitModel) {
+        System.out.println ("habitModel: " + habitModel.getMissedDays());
+//        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_NAME,habitModel.getName());
+        values.put(COL_TYPE,habitModel.getHabitType());
+        values.put(COL_START_DATE,habitModel.getStartDate());
+        values.put(COL_MISSED_DAYS,habitModel.getMissedDays());
+        values.put(COL_TOTAL_DAYS,habitModel.getTotalDays());
+//        System.out.println ("values: " + values);
+        deleteRecord(habitModel.getName());
+        SQLiteDatabase db = null;
+        try {
+            db = this.getWritableDatabase();
+
+
+            // Insert the new entry into the DB.
+            db.insert(TABLE_NAME,null,values);
+//            db.update(TABLE_NAME, values, "name=?", new String[]{habitModel.getName()});
+        } finally {
+            db.close();
+        }
     }
 
     //delete record method
@@ -107,9 +139,11 @@ public class HabitDBHelper extends SQLiteOpenHelper {
                 int habitID = cursor.getInt(0);
                 String habitName = cursor.getString(1);
                 String habitType = cursor.getString(2);
-                String habitDate = cursor.getString(3);
+                String habitStartDate = cursor.getString(3);
+                int habitMissedDays = cursor.getInt(4);
+                int habitTotalDays = cursor.getInt(5);
 
-                HabitModel newHabit = new HabitModel(habitID, habitName, habitType, habitDate);
+                HabitModel newHabit = new HabitModel(habitID, habitName, habitType, habitStartDate, habitMissedDays, habitTotalDays);
                 returnList.add(newHabit);
 
             }while(cursor.moveToNext());

@@ -7,9 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class Home extends AppCompatActivity {
-    Button calNavBtn, waterNavBtn, habitNavBtn, logOutBtn;
+    RelativeLayout calNavBtn, waterNavBtn, habitNavBtn, logOutBtn;
+    TextView welcomeTitle, welcomeName;
+    String user_n;
+//    Button calNavBtn, waterNavBtn, habitNavBtn, logOutBtn;
     UserDBHelper db = new UserDBHelper(this);
 
     @Override
@@ -17,6 +22,12 @@ public class Home extends AppCompatActivity {
         final Context context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        String activeUser = db.getUser();
+        welcomeTitle = findViewById(R.id.welcomeTitle);
+        welcomeName = findViewById(R.id.welcomeName);
+        welcomeTitle.setText("Welcome, ");
+        welcomeName.setText(activeUser + "!");
 
         calNavBtn = findViewById(R.id.calNavBtn);
         waterNavBtn = findViewById(R.id.waterNavBtn);

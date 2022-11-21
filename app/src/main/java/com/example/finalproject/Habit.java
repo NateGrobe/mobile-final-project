@@ -24,10 +24,15 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,10 +49,13 @@ public class Habit extends AppCompatActivity {
     private RadioGroup radioGroup;
     ListView presetHabitList;
     EditText name;
+    TextView Edit_startDate, Edit_missedDays, Edit_totalDays;
     Switch sw_activeHabit;
 
     HabitDBHelper myDb;
     List<HabitModel> habits;
+
+    int missedDays, totalDays;
 
     ArrayList<String> presetHabits = new ArrayList<>();
 
@@ -67,7 +75,7 @@ public class Habit extends AppCompatActivity {
 
         get_json();
         buildDialog();
-        openCalendarDialog();
+
 
         habits = myDb.getHabits();
         Integer habitCount = habits.size();
@@ -119,16 +127,70 @@ public class Habit extends AppCompatActivity {
     }
 
 
-    private void openCalendarDialog() {
+    private void openCalendarDialog(HabitModel habitModel) {
+//        habitModel.getName(), habitModel.getHabitType(), habitModel.getStartDate(), habitModel.getMissedDays(), habitModel.getTotalDays();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.habit_calendar_dialog, null);
 
-        CalendarView calendar = view.findViewById(R.id.calendar);
 
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        Edit_startDate = view.findViewById(R.id.Edit_startDate);
+        Edit_missedDays = view.findViewById(R.id.Edit_missedDays);
+        Edit_totalDays = view.findViewById(R.id.Edit_totalDays);
+
+        String startDate = habitModel.getStartDate();
+        missedDays = habitModel.getMissedDays();
+
+
+
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd MM yyyy");
+//        System.out.println ("df: " + df);
+
+        String currentDate = df.format(c);
+//        System.out.println ("currentDate: " + currentDate);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MM yyyy");
+        LocalDate date1 = LocalDate.parse(startDate, dtf);
+        LocalDate date2 = LocalDate.parse(currentDate, dtf);
+        Period daysBetween = Period.between(date1, date2);
+//        System.out.println ("Days: " + daysBetween.getDays());
+
+        Integer total = daysBetween.getDays() - missedDays;
+
+        Edit_startDate.setText(startDate);
+        Edit_missedDays.setText(String.valueOf(missedDays));
+        Edit_totalDays.setText(total.toString());
+
+        TextView plusMissed = view.findViewById(R.id.plusMissed);
+        TextView minusMissed = view.findViewById(R.id.minusMissed);
+
+        plusMissed.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                System.out.println("date clicked=> " + day);
+            public void onClick(View view) {
+                String missedStr = Edit_missedDays.getText().toString();
+                int missedInt = Integer.parseInt(missedStr);
+                missedInt++;
+                Edit_missedDays.setText(String.valueOf(missedInt));
+                habitModel.setMissedDays(missedInt);
+                Integer total = daysBetween.getDays() - missedDays;
+                habitModel.setTotalDays(total);
+            }
+        });
+
+        minusMissed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String missedStr = Edit_missedDays.getText().toString();
+                int missedInt = Integer.parseInt(missedStr);
+                if(missedInt != 0){
+                    missedInt--;
+                    Edit_missedDays.setText(String.valueOf(missedInt));
+                    habitModel.setMissedDays(missedInt);
+                    Integer total = daysBetween.getDays() - missedDays;
+                    habitModel.setTotalDays(total);
+                }
+
+
             }
         });
 
@@ -139,6 +201,8 @@ public class Habit extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+
+                        myDb.updateRecord(habitModel);
                     }
                 });
         calendarDialog = builder.create();
@@ -166,7 +230,7 @@ public class Habit extends AppCompatActivity {
         presetHabitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(Habit.this, "clicked on " + presetHabits.get(i), Toast.LENGTH_LONG).show();
+//                Toast.makeText(Habit.this, "clicked on " + presetHabits.get(i), Toast.LENGTH_LONG).show();
                 name.setText(presetHabits.get(i));
             }
         });
@@ -206,17 +270,21 @@ public class Habit extends AppCompatActivity {
                                 Date c = Calendar.getInstance().getTime();
 
 
-                                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                                SimpleDateFormat df = new SimpleDateFormat("dd MM yyyy", Locale.getDefault());
                                 String startDate = df.format(c);
-                                System.out.println("time: Current time => " + startDate);
+//                                System.out.println("time: Current time => " + startDate);
+
+                                missedDays = 0;
+                                totalDays = 0;
+
                                 //create an object from habitModel class
-                                HabitModel habitModel = new HabitModel(-1, name.getText().toString(), habitType, startDate);
-                                Toast.makeText(Habit.this, startDate, Toast.LENGTH_LONG).show();
+                                HabitModel habitModel = new HabitModel(-1, name.getText().toString(), habitType, startDate, missedDays, totalDays);
+//                                Toast.makeText(Habit.this, startDate, Toast.LENGTH_LONG).show();
                                 //add new record
                                 myDb.addRecord(habitModel);
 
                                 //addCard to layout
-                                addCard(name.getText().toString(), habitType, startDate);
+                                addCard(habitModel);
                             }
                             catch (Exception e) {
                                 Toast.makeText(Habit.this, "Error creating habit", Toast.LENGTH_LONG).show();
@@ -229,6 +297,7 @@ public class Habit extends AppCompatActivity {
 
 
                     }
+
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -238,8 +307,11 @@ public class Habit extends AppCompatActivity {
                 });
         dialog = builder.create();
     }
-    private void addCard(String name, String habitType, String habitDate) {
+    private void addCard(HabitModel habitModel) {
         View view = getLayoutInflater().inflate(R.layout.habit_card, null);
+
+        habitType = habitModel.getHabitType();
+        System.out.println("habitType => " + habitType);
 
 //        Toast.makeText(Habit.this, name + " " + habitType, Toast.LENGTH_LONG).show();
 
@@ -247,6 +319,7 @@ public class Habit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                openCalendarDialog(habitModel);
                 calendarDialog.show();
 //                name.setText("");
             }
@@ -258,29 +331,30 @@ public class Habit extends AppCompatActivity {
         Button delete = view.findViewById(R.id.delete);
         TextView startDate = view.findViewById(R.id.startDate);
 
-        startDate.setText(habitDate);
-        nameView.setText(name);
+        startDate.setText(habitModel.getStartDate());
+        nameView.setText(habitModel.getName());
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                habitOptions();
-//            }
-//        });
 
         delete.setOnClickListener(new View.OnClickListener() {
+            String deleteHabitType = habitType;
             @Override
             public void onClick(View v) {
-                if(habitType.equals("streak")) {
+                System.out.println("delete.setOnClickListener => " + v);
+                if(deleteHabitType.equals("streak")) {
+                    System.out.println("habitType.equals(\"streak\") => " + v);
                     streakLayout.removeView(view);
-                }else if(habitType.equals("daily")) {
+                    //call the deleteRecord method
+                    myDb.deleteRecord(habitModel.getName());
+                }else if(deleteHabitType.equals("daily")) {
+                    System.out.println("habitType.equals(\"daily\") => " + v);
                     dailyLayout.removeView(view);
+                    //call the deleteRecord method
+                    myDb.deleteRecord(habitModel.getName());
                 }else {
                     containerLayout.removeView(view);
                 }
 
-                //call the deleteRecord method
-                myDb.deleteRecord(name);
+
 
             }
         });
@@ -297,58 +371,28 @@ public class Habit extends AppCompatActivity {
 
     //display the records from DB
     private void displayDatabase() {
-//        HabitDBHelper habitDBHelper = new HabitDBHelper();
-//        List<HabitModel> habits = myDb.getHabits();
 
-//        ArrayAdapter habitArrayAdapter = new ArrayAdapter<HabitModel>(this, )
-        Date c = Calendar.getInstance().getTime();
-        System.out.println("time: Current time => " + c);
         for (int i=0; i<habits.size(); i++) {
 
 //            habits.get(i)
 //            Integer habitID = habits.get(i).getId();
             String habitName = habits.get(i).getName();
             String habitType = habits.get(i).getHabitType();
-            String habitDate = habits.get(i).getStartDate();
+            String habitStartDate = habits.get(i).getStartDate();
+            int habitMissedDays = habits.get(i).getMissedDays();
+            int habitTotalDays = habits.get(i).getTotalDays();
+
+            HabitModel habitModel = new HabitModel(-1, habitName, habitType, habitStartDate, habitMissedDays, habitTotalDays);
 
             //get date
-            System.out.println("time: habitDate => " + habitDate);
+//            System.out.println("time: habitDate => " + habitStartDate);
 
 
-
-
-            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-//            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MM yyyy");
-
-//            Date date = df.parse(habitDate);
-
-            String todaysDate = df.format(c);
-//            System.out.println("time: Current time dtf => " + dtf.format(c));
-
-//            startDateValue = new Date(habitDate);
-//
-//            long diff = endDateValue. getTime() - startDateValue. getTime();
-
-//            Date mTodaysdate = df.parse(todaysDate);
-
-//            long diff = c.getTime() - habitDate.getTime();
-//            long seconds = diff / 1000;
-//            long minutes = seconds / 60;
-//            long hours = minutes / 60;
-//            long days = (hours / 24) + 1;
-//            Log.d("days", "" + days);
-
-//            Toast.makeText(Habit.this, habits.get(i).getHabitType().toString(), Toast.LENGTH_LONG).show();
             //addCard to layout
-            addCard(habitName, habitType, habitDate);
-//            System.out.println(habits.get(i));
+            addCard(habitModel);
+            System.out.println(habits.get(i));
         }
 
-
-//        String temp = myDb.databaseToString();
-//        Toast.makeText(Habit.this, habits.toString(), Toast.LENGTH_LONG).show();
-//        buckesText =  (TextView) findViewById(R.id.buckesText);
-//        buckesText.setText(temp);
 
     }
 

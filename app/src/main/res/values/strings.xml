@@ -6,4 +6,6 @@
         <item>Cups</item>
         <item>ML</item>
     </string-array>
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
 </resources>

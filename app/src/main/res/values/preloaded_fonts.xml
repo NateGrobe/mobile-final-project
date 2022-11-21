@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/atomic_age</item>
+        <item>@font/autour_one</item>
+        <item>@font/baloo_thambi</item>
+        <item>@font/bevan</item>
+        <item>@font/days_one</item>
+        <item>@font/nova_cut</item>
+        <item>@font/viga</item>
+    </array>
+</resources>

@@ -12,9 +12,12 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="10dp">
+            app:cardElevation="20dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -24,7 +27,7 @@
 
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="198dp"
+                    android:layout_width="225dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="84dp"
                     android:layout_toStartOf="@+id/delete"
@@ -46,10 +49,10 @@
 
                 <Button
                     android:id="@+id/delete"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="Delete"
+                    android:text="X"
                     />
 
             </RelativeLayout>

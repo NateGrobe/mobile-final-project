@@ -1,43 +1,30 @@
 [
     {
-      "name": "Read 1 page",
-      "habitType": "daily"
+      "name": "Read 1 page"
     },{
-      "name": "Meditate 1 minute",
-      "habitType": "daily"
+      "name": "Meditate 1 minute"
     },{
-      "name": "do 1 push up",
-      "habitType": "daily"
+      "name": "do 1 push up"
     },{
-      "name": "take out trash / recycling",
-      "habitType": "daily"
+      "name": "take out trash / recycling"
     },{
-      "name": "tidy up my bedroom",
-      "habitType": "daily"
+      "name": "tidy up my bedroom"
     },{
-      "name": "write 1 thing to be grateful for",
-      "habitType": "daily"
+      "name": "write 1 thing to be grateful for"
     },{
-      "name": "go to bed by [time]",
-      "habitType": "daily"
+      "name": "go to bed by [time]"
     },{
-      "name": "floss teeth",
-      "habitType": "daily"
+      "name": "floss teeth"
     },{
-      "name": "contact 1 potential client",
-      "habitType": "daily"
+      "name": "contact 1 potential client"
     },{
-      "name": "take vitamins",
-      "habitType": "daily"
+      "name": "take vitamins"
     },{
-      "name": "make my bed",
-      "habitType": "daily"
+      "name": "make my bed"
     },{
-      "name": "take a walk outside",
-      "habitType": "daily"
+      "name": "take a walk outside"
     },{
-      "name": "wake up by [time]",
-      "habitType": "daily"
+      "name": "wake up by [time]"
     }
   ]
 

@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,6 +11,12 @@
         android:orientation="vertical"
         android:background="@color/nature">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Habit"
+            android:fontFamily="@font/bevan"
+            android:textColor="@color/white"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,5 +107,5 @@
 
 
     </LinearLayout>
-    
+
 </RelativeLayout>
