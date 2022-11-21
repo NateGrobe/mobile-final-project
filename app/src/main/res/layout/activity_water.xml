@@ -22,6 +22,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:inputType="number"
+            android:textColor="@color/black"
             android:hint="Number" />
 
         <Spinner
@@ -81,6 +82,7 @@
             android:layout_marginStart="50dp"
             android:layout_weight="1"
             android:text="Water Consumed:"
+            android:textColor="@color/black"
             android:textAlignment="textEnd" />
 
         <TextView
@@ -90,6 +92,7 @@
             android:layout_weight="1"
             android:layout_marginEnd="5dp"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:text="0" />
         <Spinner
             android:id="@+id/outputUnitSpinner"
@@ -106,6 +109,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/rec_header"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textStyle="bold" />
 
     <TextView
@@ -113,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:textColor="@color/black"
         android:text="@string/rec_values" />
 
 
