@@ -38,7 +38,7 @@ public class Water extends AppCompatActivity {
         outputUnitSpinner = findViewById(R.id.outputUnitSpinner);
         addBtn = findViewById(R.id.addBtn);
         subBtn = findViewById(R.id.subBtn);
-        image=findViewById(R.id.image);
+        image = findViewById(R.id.image);
         totalCups = findViewById(R.id.totalCups);
 
         ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.units, android.R.layout.simple_spinner_item);
