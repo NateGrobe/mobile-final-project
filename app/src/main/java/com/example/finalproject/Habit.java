@@ -196,8 +196,7 @@ public class Habit extends AppCompatActivity {
 
 
         builder.setView(view);
-        builder.setTitle("Calendar")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -256,8 +255,7 @@ public class Habit extends AppCompatActivity {
 
 
         builder.setView(view);
-        builder.setTitle("Add Habit")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
