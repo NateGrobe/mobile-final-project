@@ -19,16 +19,30 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/nature"
                 android:padding="10dp" >
 
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="198dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="84dp"
+                    android:layout_toStartOf="@+id/delete"
+                    android:padding="10dp"
                     android:text="Name"
-                    android:textColor="@android:color/holo_purple"
+                    android:textColor="@color/white"
                     android:textFontWeight="1000"
                     android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/delete"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_toStartOf="@+id/delete"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/delete"
@@ -43,5 +57,5 @@
         </androidx.cardview.widget.CardView>
         
     </RelativeLayout>
-    
+
 </RelativeLayout>

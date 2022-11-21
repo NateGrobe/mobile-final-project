@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="@color/beige"
     tools:context=".Habit">
 
 
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:background="@color/cardview_dark_background"
+                android:background="@color/earth"
                 android:textColor="@color/white"
                 android:text="Habit Tracking"
                 android:textSize="35dp"
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/earth"
                     android:text="Streaks"
                     android:textSize="25dp"
                     android:paddingTop="10dp"
@@ -74,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/earth"
                     android:text="Daily"
                     android:textSize="25dp"
                     android:paddingTop="10dp"

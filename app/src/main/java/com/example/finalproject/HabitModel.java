@@ -1,19 +1,23 @@
 package com.example.finalproject;
 
+import java.util.Date;
+
 public class HabitModel {
 
     private int id;
-    private String name, habitType;
-    private boolean isActive;
+    private String name;
+    private String habitType;
+    private String startDate;
+
 
     //Constructors
 
 
-    public HabitModel(int id, String name, String habitType) {
+    public HabitModel(int id, String name, String habitType, String startDate) {
         this.id = id;
         this.name = name;
         this.habitType = habitType;
-//        this.isActive = isActive;
+        this.startDate = startDate;
     }
 
     //toString to print as one line
@@ -24,8 +28,8 @@ public class HabitModel {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", habitType='" + habitType +
-//                '\'' +
-//                ", isActive=" + isActive +
+                '\'' +
+                ", startDate=" + startDate +
                 '}';
     }
 
@@ -56,11 +60,7 @@ public class HabitModel {
         this.habitType = habitType;
     }
 
-//    public boolean isActive() {
-//        return isActive;
-//    }
-//
-//    public void setActive(boolean active) {
-//        isActive = active;
-//    }
+    public String getStartDate() { return startDate; }
+
+    public void setStartDate(String startDate) { this.startDate = startDate; }
 }

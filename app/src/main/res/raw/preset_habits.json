@@ -1,0 +1,44 @@
+[
+    {
+      "name": "Read 1 page",
+      "habitType": "daily"
+    },{
+      "name": "Meditate 1 minute",
+      "habitType": "daily"
+    },{
+      "name": "do 1 push up",
+      "habitType": "daily"
+    },{
+      "name": "take out trash / recycling",
+      "habitType": "daily"
+    },{
+      "name": "tidy up my bedroom",
+      "habitType": "daily"
+    },{
+      "name": "write 1 thing to be grateful for",
+      "habitType": "daily"
+    },{
+      "name": "go to bed by [time]",
+      "habitType": "daily"
+    },{
+      "name": "floss teeth",
+      "habitType": "daily"
+    },{
+      "name": "contact 1 potential client",
+      "habitType": "daily"
+    },{
+      "name": "take vitamins",
+      "habitType": "daily"
+    },{
+      "name": "make my bed",
+      "habitType": "daily"
+    },{
+      "name": "take a walk outside",
+      "habitType": "daily"
+    },{
+      "name": "wake up by [time]",
+      "habitType": "daily"
+    }
+  ]
+
+
