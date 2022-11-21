@@ -47,16 +47,16 @@ public class Calories extends AppCompatActivity {
         String calCountStr = "Total: " + calorieTotal;
         calorieCount.setText(calCountStr);
 
-        String calBreakfastStr = "Breakfast: " + breakfastSave;
+        String calBreakfastStr = "Breakfast:\n" + breakfastSave;
         calorieBreakfast.setText(calBreakfastStr);
 
-        String calLunchStr = "Lunch: " + lunchSave;
+        String calLunchStr = "Lunch:\n" + lunchSave;
         calorieLunch.setText(calLunchStr);
 
-        String calSnackStr = "Snack: " + snackSave;
+        String calSnackStr = "Snack:\n" + snackSave;
         calorieSnack.setText(calSnackStr);
 
-        String calDinnerStr = "Dinner: " + dinnerSave;
+        String calDinnerStr = "Dinner:\n" + dinnerSave;
         calorieDinner.setText(calDinnerStr);
 
         Button addMealBtn = (Button) findViewById(R.id.addMeal);
