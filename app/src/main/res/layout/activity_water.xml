@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_weight="1"
-            android:text="Water Consumed:"
+            android:text="@string/water_consumed"
             android:textAlignment="textEnd" />
 
         <TextView
@@ -98,7 +98,7 @@
             android:layout_weight="1"
             android:layout_marginEnd="5dp"
             android:textAlignment="center"
-            android:text="0" />
+            />
         <Spinner
             android:id="@+id/outputUnitSpinner"
             android:layout_width="wrap_content"

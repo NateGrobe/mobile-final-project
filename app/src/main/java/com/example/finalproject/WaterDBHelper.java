@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 public class WaterDBHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "wellness.db";
+    private static final String DATABASE_NAME = "water.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "water";
     private static final String COL_ID ="id" ;
@@ -19,7 +19,7 @@ public class WaterDBHelper extends SQLiteOpenHelper {
     private static final String COL_TIME = "RecordDate";
 
     public WaterDBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, DATABASE_NAME, factory, version);
+        super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
     @Override

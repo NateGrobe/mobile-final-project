@@ -23,10 +23,9 @@ public class Water extends AppCompatActivity {
     Spinner unitSpinner, outputUnitSpinner;
     Button addBtn, subBtn;
     ImageView image;
-    TextView totalCups;
     String unit;
     int volume;
-
+    TextView totalCups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +38,23 @@ public class Water extends AppCompatActivity {
         addBtn = findViewById(R.id.addBtn);
         subBtn = findViewById(R.id.subBtn);
         image=findViewById(R.id.image);
-        totalCups= findViewById(R.id.totalCups);
+        totalCups = findViewById(R.id.totalCups);
 
         ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.units, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         unitSpinner.setAdapter(adapter);
         outputUnitSpinner.setAdapter(adapter);
 
-        DB = new WaterDBHelper(this, null, null, 2);
+        DB = new WaterDBHelper(this, null, null, 1);
         volume = 0;
         unit = "Cups";
         amountText.setText("0");
         DB.addRecord(volume, unit);
         DB.deleteRecords();
         int currentVolume = DB.retrieveVolume();
-        totalCups.setText(String.valueOf(currentVolume));
         setImage(currentVolume);
+        System.out.println("currentVolume:" + currentVolume);
+        totalCups.setText(String.valueOf(currentVolume));
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +115,7 @@ public class Water extends AppCompatActivity {
     }
 
     private void changeMeasurements(String unitSelected) {
+        TextView totalCups = (TextView) findViewById(R.id.totalCups);
         int currentVol = Integer.parseInt(totalCups.getText().toString());
         if(unitSelected.equals("ML")) {
             currentVol = currentVol * 250;
@@ -134,6 +135,7 @@ public class Water extends AppCompatActivity {
         if (SelectedUnit.equals("ML")) {
             newVolume = newVolume * 250;
         }
+        TextView totalCups = (TextView) findViewById(R.id.totalCups);
         totalCups.setText(String.valueOf(newVolume));
 
     }
@@ -149,6 +151,7 @@ public class Water extends AppCompatActivity {
         if (SelectedUnit.equals("ML")) {
             newVolume = newVolume * 250;
         }
+        TextView totalCups = (TextView) findViewById(R.id.totalCups);
         totalCups.setText(String.valueOf(newVolume));
     }
     public void setImage(int volume){
@@ -189,4 +192,7 @@ public class Water extends AppCompatActivity {
                 break;
         }
     }
+
+
+
 }
