@@ -3,44 +3,80 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="409dp"
-    android:layout_height="729dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/layout_bg"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="1dp"
     tools:context=".MainActivity" >
 
-    <EditText
-        android:id="@+id/usernameInputLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Username" />
 
-    <EditText
-        android:id="@+id/passwordInputLogin"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Password" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="120dp"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-    <CheckBox
-        android:id="@+id/rememberMeChkBoxSI"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Remember Me" />
 
-    <Button
-        android:id="@+id/signInBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign In" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bevan"
+                android:text="Wellness Plus"
+                android:textAlignment="center"
+                android:textColor="@color/earth"
+                android:textFontWeight="500"
+                android:textSize="30dp" />
 
-    <Button
-        android:id="@+id/signUpNavBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Don't have an account? Sign Up" />
+            <EditText
+                android:id="@+id/usernameInputLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Username" />
+
+            <EditText
+                android:id="@+id/passwordInputLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Password" />
+
+            <CheckBox
+                android:id="@+id/rememberMeChkBoxSI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remember Me" />
+
+            <Button
+                android:id="@+id/signInBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign In" />
+
+            <Button
+                android:id="@+id/signUpNavBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/earth"
+                android:text="Don't have an account? Sign Up" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
 </LinearLayout>

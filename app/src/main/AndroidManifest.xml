@@ -23,21 +23,26 @@
         <activity
             android:name=".SignUp"
             android:exported="false"
+            android:label="Sign Up"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Habit"
             android:exported="false"
+            android:label="Habits"
             android:parentActivityName=".Home" />
         <activity
             android:name=".Water"
             android:exported="false"
+            android:label="Water"
             android:parentActivityName=".Home" />
         <activity
             android:name=".Calories"
             android:exported="false"
+            android:label="Calories"
             android:parentActivityName=".Home" />
         <activity
             android:name=".Home"
+            android:label="Home"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -48,6 +53,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

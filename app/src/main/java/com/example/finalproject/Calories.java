@@ -42,14 +42,22 @@ public class Calories extends AppCompatActivity {
         int lunchSave = db.sumCalories(2);
         int dinnerSave= db.sumCalories(3);
         int snackSave = db.sumCalories(4);
-
         int calorieTotal = breakfastSave+lunchSave+dinnerSave+snackSave;
 
-        calorieCount.setText(String.valueOf(calorieTotal));
-        calorieBreakfast.setText(String.valueOf(breakfastSave));
-        calorieLunch.setText(String.valueOf(lunchSave));
-        calorieDinner.setText(String.valueOf(dinnerSave));
-        calorieSnack.setText(String.valueOf(snackSave));
+        String calCountStr = "Total: " + calorieTotal;
+        calorieCount.setText(calCountStr);
+
+        String calBreakfastStr = "Breakfast:\n" + breakfastSave;
+        calorieBreakfast.setText(calBreakfastStr);
+
+        String calLunchStr = "Lunch:\n" + lunchSave;
+        calorieLunch.setText(calLunchStr);
+
+        String calSnackStr = "Snack:\n" + snackSave;
+        calorieSnack.setText(calSnackStr);
+
+        String calDinnerStr = "Dinner:\n" + dinnerSave;
+        calorieDinner.setText(calDinnerStr);
 
         Button addMealBtn = (Button) findViewById(R.id.addMeal);
 
@@ -57,12 +65,8 @@ public class Calories extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
                 Intent addMealNav = new Intent(Calories.this, MealSelectionActivity.class);
                 startActivity(addMealNav);
-
-
-
             }
         });
 

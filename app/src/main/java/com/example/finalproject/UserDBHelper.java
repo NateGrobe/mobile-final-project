@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -132,6 +131,17 @@ public class UserDBHelper extends SQLiteOpenHelper {
             db_write.update(TABLE_NAME, values, "id = ?", new String[]{Integer.toString(user_id)});
         }
         cursor.close();
+    }
+
+    public String getUser() {
+        SQLiteDatabase db_read = this.getReadableDatabase();
+        Cursor cursor = db_read.rawQuery("select * from " + TABLE_NAME + " where " + COL_ACTIVE_USER + "=1;", null);
+
+        if (cursor.moveToFirst()) {
+            db_read.close();
+            return cursor.getString(1);
+        }
+        return null;
     }
 
 }

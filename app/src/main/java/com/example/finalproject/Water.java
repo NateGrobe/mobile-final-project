@@ -38,8 +38,8 @@ public class Water extends AppCompatActivity {
         outputUnitSpinner = findViewById(R.id.outputUnitSpinner);
         addBtn = findViewById(R.id.addBtn);
         subBtn = findViewById(R.id.subBtn);
-        image=findViewById(R.id.image);
-        totalCups= findViewById(R.id.totalCups);
+        image = findViewById(R.id.image);
+        totalCups = findViewById(R.id.totalCups);
 
         ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.units, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -102,7 +102,7 @@ public class Water extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 String unitSelected = outputUnitSpinner.getItemAtPosition(position).toString();
-                Toast.makeText(Water.this, "you selected: " + unitSelected,Toast.LENGTH_LONG).show();
+//                Toast.makeText(Water.this, "you selected: " + unitSelected,Toast.LENGTH_LONG).show();
                 changeMeasurements(unitSelected);
             }
 
@@ -127,7 +127,7 @@ public class Water extends AppCompatActivity {
     private void addTotal(WaterDBHelper DB, int currentVolume, String currentUnit, String SelectedUnit){
 
         int oldVolume = DB.retrieveVolume();
-        Toast.makeText(this, String.valueOf(oldVolume), Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, String.valueOf(oldVolume), Toast.LENGTH_LONG).show();
         int newVolume = oldVolume + currentVolume;
         setImage(newVolume);
         DB.updateRecord(newVolume, currentUnit);
@@ -140,7 +140,7 @@ public class Water extends AppCompatActivity {
     private void subTotal(WaterDBHelper DB, int currentVolume, String currentUnit, String SelectedUnit){
         int newVolume = 0;
         int oldVolume = DB.retrieveVolume();
-        Toast.makeText(this, String.valueOf(oldVolume), Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, String.valueOf(oldVolume), Toast.LENGTH_LONG).show();
         if(oldVolume >= currentVolume) {
            newVolume = oldVolume - currentVolume;
         }
@@ -152,7 +152,7 @@ public class Water extends AppCompatActivity {
         totalCups.setText(String.valueOf(newVolume));
     }
     public void setImage(int volume){
-        Toast.makeText(this, "Volume: " + volume, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "Volume: " + volume, Toast.LENGTH_LONG).show();
         switch (volume){
             case 0:
                 image.setImageDrawable(getResources().getDrawable(R.drawable.waterdropletempty));

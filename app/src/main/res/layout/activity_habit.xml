@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige"
     tools:context=".Habit">
 
 
@@ -32,18 +31,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:background="@color/earth"
-                android:textColor="@color/white"
-                android:text="Habit Tracking"
-                android:textSize="35dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_centerHorizontal="true" />
 
             <LinearLayout
                 android:id="@+id/streak"
@@ -54,13 +41,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="@color/earth"
-                    android:text="Streaks"
-                    android:textSize="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/bevan"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:layout_centerHorizontal="true"/>
+                    android:text="Streaks"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textColor="@color/nature"
+                    android:textFontWeight="300" />
 
 
             </LinearLayout>
@@ -73,13 +62,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="@color/earth"
-                    android:text="Daily"
-                    android:textSize="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/bevan"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:layout_centerHorizontal="true"/>
+                    android:text="Daily"
+                    android:textAlignment="center"
+                    android:textColor="@color/nature"
+                    android:textSize="30sp"
+                    android:textFontWeight="300" />
 
 
             </LinearLayout>
